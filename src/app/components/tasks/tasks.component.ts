@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TaskService } from '../../services/task.service';
 import { Task } from '../../Task';
-import { TASKS } from '../../mock-tasks';
 
 @Component({
   selector: 'app-tasks',
@@ -8,6 +8,11 @@ import { TASKS } from '../../mock-tasks';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
-  tasks: Task[] = TASKS
+  tasks: Task[] = []
+  taskService: TaskService = inject(TaskService)
+
+  constructor(){
+    this.tasks = this.taskService.getTasks()
+  }
 
 }
