@@ -12,7 +12,7 @@ export class TasksComponent {
   taskService: TaskService = inject(TaskService)
 
   constructor(){
-    this.tasks = this.taskService.getTasks()
+    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 
 }
